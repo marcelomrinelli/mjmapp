@@ -1,12 +1,7 @@
-# Mensaje de entrada del usuario
-
-
 import os
-import openai
 import streamlit as st
 import requests
-
-
+import openai
 # Configurar la clave API para OpenAI
 from dotenv import load_dotenv
 print("Dotenv library imported successfully!")
@@ -16,12 +11,6 @@ openai.api_key=api_key
 usuario_github = "marcelomrinelli"  # Tu nombre de usuario en GitHub
 repositorio = "app-curso"  # El nombre del repositorio
 ruta = ""  # La ruta dentro del repositorio, déjala vacía si es la raíz
-
-# Configuración del repositorio de GitHub
-usuario_github = "marcelomrinelli"  # Tu nombre de usuario en GitHub
-repositorio = "app-curso"  # El nombre del repositorio
-ruta = ""  # La ruta dentro del repositorio, déjala vacía si es la raíz
-
 
 # Función para obtener archivos desde un repositorio de GitHub
 def obtener_archivos_github(usuario, repositorio, ruta=""):
