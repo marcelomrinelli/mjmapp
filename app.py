@@ -5,9 +5,14 @@ import openai
 # Configurar la clave API para OpenAI
 from dotenv import load_dotenv
 print("Dotenv library imported successfully!")
-load_dotenv()
-api_key = os.getenv('OPENAI_API_KEY')
-openai.api_key=api_key
+#load_dotenv()
+#api_key = os.getenv('OPENAI_API_KEY')
+# Obtener la clave desde secrets
+#api_key = st.secrets["openai"]["api_key"]
+#api_key = st.secrets["openai"]["api_key"]
+# Configurar la API de OpenAI
+api_key = st.secrets["api_key"]
+openai.api_key = api_key
 usuario_github = "marcelomrinelli"  # Tu nombre de usuario en GitHub
 repositorio = "app-curso"  # El nombre del repositorio
 ruta = ""  # La ruta dentro del repositorio, déjala vacía si es la raíz
