@@ -13,6 +13,7 @@ print("Dotenv library imported successfully!")
 # Configurar la API de OpenAI
 api_key = st.secrets["api_key"]
 openai.api_key = api_key
+print(f"La clave API es: {api_key}")
 usuario_github = "marcelomrinelli"  # Tu nombre de usuario en GitHub
 repositorio = "app-curso"  # El nombre del repositorio
 ruta = ""  # La ruta dentro del repositorio, déjala vacía si es la raíz
