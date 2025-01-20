@@ -57,7 +57,11 @@ def generar_respuesta(pregunta, contexto):
     
     response = openai.ChatCompletion.create(
         model="gpt-4",
-        messages=mensajes,
+        messages=[
+                {"role": "system", "content": contexto},
+                {"role": "user", "content": pregunta}
+            ],
+       # messages=mensajes,
         max_tokens=512,
         temperature=0.7,
     )
