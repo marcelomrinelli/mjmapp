@@ -2,20 +2,21 @@ import os
 import streamlit as st
 import requests
 import openai
+
+#client = OpenAI(api_key=api_key)
 # Configurar la clave API para OpenAI
 from dotenv import load_dotenv
 print("Dotenv library imported successfully!")
-#load_dotenv()
-#api_key = os.getenv('OPENAI_API_KEY')
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY')
 # Obtener la clave desde secrets
 #api_key = st.secrets["openai"]["api_key"]
 #api_key = st.secrets["openai"]["api_key"]
 # Configurar la API de OpenAI
-api_key = st.secrets["api_key"]
-openai.api_key = api_key
+#api_key = st.secrets["api_key"]
 print(f"La clave API es: {api_key}")
 usuario_github = "marcelomrinelli"  # Tu nombre de usuario en GitHub
-repositorio = "app-curso"  # El nombre del repositorio
+repositorio = "mjmapp"  # El nombre del repositorio
 ruta = ""  # La ruta dentro del repositorio, déjala vacía si es la raíz
 
 # Función para obtener archivos desde un repositorio de GitHub
@@ -53,15 +54,13 @@ def generar_respuesta(pregunta, contexto):
         {"role": "system", "content": "Eres un asistente útil que responde preguntas basándose en documentos."},
         {"role": "user", "content": f"Contexto: {contexto}\n\nPregunta: {pregunta}"}
     ]
-    
-    
-    response = openai.ChatCompletion.create(
-        model="gpt-4",
-        messages=mensajes,
-        max_tokens=512,
-        temperature=0.7,
-    )
-    return response['choices'][0]['message']['content'].strip()
+
+
+    response = client.chat.completions.create(model="gpt-4",
+    messages=mensajes,
+    max_tokens=512,
+    temperature=0.7)
+    return response.choices[0].message.content.strip()
 
 
 # Cargar los documentos al iniciar desde GitHub
